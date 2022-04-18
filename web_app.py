@@ -6,7 +6,7 @@ from sklearn.neighbors import NearestNeighbors
 
 st.image("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80")
 
-new_df = pd.read_csv('https://media.githubusercontent.com/media/weiaun96/ecommerce-recommendation-web-app/main/reviews.csv', on_bad_lines='skip')
+new_df = pd.read_csv('https://media.githubusercontent.com/media/weiaun96/ecommerce-recommendation-web-app/main/reviews2.csv', on_bad_lines='skip')
 
 #Import Libraries for matrix factorization
 import sklearn
@@ -76,13 +76,13 @@ if st.button('**Search Now**'):
     else:
         searchResult = new_df[new_df['product_title'].str.contains((searchTerm),case=False)]
         searchdupl = searchResult.drop_duplicates(subset='product_title')
-        searchResultSorted = searchdupl.sort_values(by=['avg_vader_score', 'avg_rating','product_title'],ascending=False).reset_index()
+        searchResultSorted = searchdupl.sort_values(by=['recommend_score','product_title'],ascending=False).reset_index()
         searchResultSorted.index = np.arange(1, len(searchResultSorted) + 1)
-        final_result = searchResultSorted.loc[:,['product_id', 'product_title','avg_rating', 'avg_vader_score']].head(10)
+        final_result = searchResultSorted.loc[:,['product_id', 'product_title','recommend_score']].head(10)
 
         #Replace average VADER score column as recommendation score
         final_result = final_result.rename(columns={'product_id': 'Product ID','product_title': 'Product Title',
-                                              'avg_rating': 'Average Rating','avg_vader_score': 'Recommendation Score'})
+                                                    'recommend_score': 'Recommendation Score'})
         if len(final_result.index) < 1:
             st.write("\nSorry! No results is found, please search again")
         else:
