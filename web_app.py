@@ -39,7 +39,7 @@ def create_matrix(df):
     user_index = [user_mapper[i] for i in new_df['customer_id']]
     product_index = [product_mapper[i] for i in new_df['product_id']]
   
-    X = csr_matrix((new_df["vader_sentiment_score"], (product_index, user_index)), shape=(M, N))
+    X = csr_matrix((new_df["recommend_score"], (product_index, user_index)), shape=(M, N))
       
     return X, user_mapper, product_mapper, user_inv_mapper, product_inv_mapper
   
