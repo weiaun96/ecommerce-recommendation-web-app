@@ -4,6 +4,17 @@ import streamlit as st
 from scipy.sparse import csr_matrix
 from sklearn.neighbors import NearestNeighbors
 
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+background-size: cover;
+}
+</style>
+'''
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 st.image("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80")
 
 new_df = pd.read_csv('https://media.githubusercontent.com/media/weiaun96/ecommerce-recommendation-web-app/main/reviews2.csv', on_bad_lines='skip')
