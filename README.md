@@ -51,7 +51,7 @@ The dataset used for this project is an Amazon outdoors product reviews dataset 
 - Since the compound score from VADER scales from -1 to 1, rescaling is needed to generate a 50% weightage in recommendation score. This is done by using the rescaling formula so that when we have the sentiment score in the 0 to 5 scale and also the rating score having a maximum score of 5, they will both add up to have a maximum recommendation score of 10.
 
 ### Collaborative Filtering Recommendation
-- the customer ids and the product ids are mapped into a map matrix. Then, K-nearest neighbor model is used to calculate the feature similarity distance between a target item with others in the matrix, which in this case, returning K-nearest products as the most similar product recommendations.
+- The customer ids and the product ids are mapped into a map matrix. Then, K-nearest neighbor model is used to calculate the feature similarity distance between a target item with others in the matrix, which in this case, returning K-nearest products as the most similar product recommendations.
 
 ### Search Engine
 - The recommendation model is supplemented with a search engine-like tool to allow customers to search for their relevant products. This search engine finds relevant products by matching the search terms with the product titles, where it can only generate search results when there is a match.
