@@ -31,7 +31,7 @@ def create_matrix(df):
     # Map Ids to indices
     user_mapper = dict(zip(np.unique(new_df["customer_id"]), list(range(N))))
     product_mapper = dict(zip(np.unique(new_df["product_id"]), list(range(M))))
-      
+    
     # Map indices to IDs
     user_inv_mapper = dict(zip(list(range(N)), np.unique(new_df["customer_id"])))
     product_inv_mapper = dict(zip(list(range(M)), np.unique(new_df["product_id"])))
